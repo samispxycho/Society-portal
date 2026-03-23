@@ -14,8 +14,20 @@ export default function Profile() {
   const [popup, setPopup] = useState({ show: false, message: "" });
 
   const handleLogout = async () => {
-    await fetch("/api/user/logout", { method: "POST" });
-    window.location.href = "/";
+    try {
+      const res = await fetch("/api/user/logout", {
+        method: "POST",
+        credentials: "include"
+      });
+
+      if (res.ok) {
+        window.location.replace("/login");
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (err) {
+      console.error("Logout error:", err);
+    }
   };
 
   useEffect(() => {
@@ -81,7 +93,6 @@ export default function Profile() {
 
       <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200 space-y-10">
 
-        {/* PROFILE */}
         <div>
           <div className="mb-6">
             <h2 className="text-lg font-semibold text-gray-800">
@@ -136,7 +147,6 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* PASSWORD */}
         <div className="pt-8 border-t border-gray-200">
           <h2 className="text-lg font-semibold text-gray-800 mb-4">
             Change Password
@@ -162,7 +172,6 @@ export default function Profile() {
 
           </div>
 
-          {/* UPDATED BUTTON ROW */}
           <div className="flex items-center justify-between mt-6">
             <button
               onClick={changePassword}
@@ -182,7 +191,6 @@ export default function Profile() {
 
       </div>
 
-      {/* POPUP */}
       {popup.show && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-xl shadow-lg w-80 text-center space-y-4">

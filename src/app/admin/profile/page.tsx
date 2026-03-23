@@ -13,8 +13,20 @@ export default function AdminProfile() {
   const [popup, setPopup] = useState({ show: false, message: "" });
 
   const handleLogout = async () => {
-    await fetch("/api/admin/logout", { method: "POST" });
-    window.location.href = "/";
+    try {
+      const res = await fetch("/api/admin/logout", {
+        method: "POST",
+        credentials: "include"
+      });
+
+      if (res.ok) {
+        window.location.href = "/";
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (err) {
+      console.error("Logout error:", err);
+    }
   };
 
   useEffect(() => {
@@ -79,7 +91,6 @@ export default function AdminProfile() {
 
       <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200 space-y-10">
 
-        {/* PROFILE */}
         <div>
           <div className="mb-6">
             <h2 className="text-lg font-semibold text-gray-800">
@@ -87,7 +98,6 @@ export default function AdminProfile() {
             </h2>
           </div>
 
-          {/* NAME + PHONE */}
           <div className="grid sm:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-600 mb-2">
@@ -112,7 +122,6 @@ export default function AdminProfile() {
             </div>
           </div>
 
-          {/* EMAIL FULL WIDTH */}
           <div className="mt-6">
             <label className="block text-sm font-medium text-gray-600 mb-2">
               Email Address
@@ -124,7 +133,6 @@ export default function AdminProfile() {
             />
           </div>
 
-          {/* BUTTON BELOW EMAIL */}
           <div className="mt-6">
             <button
               onClick={updateProfile}
@@ -135,7 +143,6 @@ export default function AdminProfile() {
           </div>
         </div>
 
-        {/* PASSWORD */}
         <div className="pt-8 border-t border-gray-200">
           <h2 className="text-lg font-semibold text-gray-800 mb-4">
             Change Password
@@ -159,7 +166,6 @@ export default function AdminProfile() {
             />
           </div>
 
-          {/* UPDATED BUTTON ROW */}
           <div className="flex items-center justify-between mt-6">
             <button
               onClick={changePassword}
@@ -179,7 +185,6 @@ export default function AdminProfile() {
 
       </div>
 
-      {/* POPUP */}
       {popup.show && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-xl shadow-lg w-80 text-center space-y-4">
