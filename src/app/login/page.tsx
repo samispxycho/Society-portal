@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
 
 export default function LoginPage(){
 
@@ -40,7 +41,6 @@ export default function LoginPage(){
 
     <div className="relative flex items-center justify-center min-h-screen overflow-hidden">
       
-      {/* Background Image */}
       <div className="absolute inset-0">
         <Image
           src="/images/society-background.jpg"
@@ -52,17 +52,14 @@ export default function LoginPage(){
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      {/* Animated Background Blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
-      {/* Login Card */}
       <div className="relative bg-white/90 backdrop-blur-xl p-8 rounded-2xl shadow-2xl w-96 border border-white/30 transform transition-all duration-500 z-10">
         
-        {/* Back to Home Link */}
         <Link 
           href="/" 
           className="absolute top-4 left-4 text-gray-500 hover:text-purple-600 transition-colors duration-200"
@@ -72,7 +69,6 @@ export default function LoginPage(){
           </svg>
         </Link>
 
-        {/* Icon/Logo */}
         <div className="mb-6 flex justify-center">
           <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-4 rounded-full shadow-lg">
             <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,6 +80,7 @@ export default function LoginPage(){
         <h1 className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
           Resident Login
         </h1>
+
         <p className="text-gray-500 text-center text-sm mb-8">
           Welcome back! Please login to your account
         </p>
@@ -97,7 +94,7 @@ export default function LoginPage(){
             <input
               type="email"
               placeholder="Email Address"
-              className="w-full border border-gray-300 p-3 pl-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-white/50"
+              className="w-full border border-gray-300 p-3 pl-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
               value={email}
               onChange={(e)=>setEmail(e.target.value)}
               required
@@ -111,7 +108,7 @@ export default function LoginPage(){
             <input
               type="password"
               placeholder="Password"
-              className="w-full border border-gray-300 p-3 pl-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-white/50"
+              className="w-full border border-gray-300 p-3 pl-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
               value={password}
               onChange={(e)=>setPassword(e.target.value)}
               required
@@ -119,10 +116,18 @@ export default function LoginPage(){
           </div>
 
           <button 
-            type="submit"
+            type="submit" 
             className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-md hover:shadow-lg font-medium hover:cursor-pointer"
           >
             Login
+          </button>
+
+          <button
+            type="button"
+            onClick={() => signIn("google")}
+            className="bg-red-500 text-white py-3 rounded-xl hover:bg-red-600 transition-all duration-300 shadow-md hover:shadow-lg font-medium hover:cursor-pointer"
+          >
+            Sign in with Google
           </button>
 
         </form>

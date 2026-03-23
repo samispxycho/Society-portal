@@ -17,7 +17,7 @@ export default async function PaymentEntry(){
 
     <div className="max-w-5xl mx-auto p-8 space-y-8 bg-gray-50 min-h-screen">
 
-      {/* HEADING aligned with card */}
+      
       <div className="max-w-xl mx-auto">
         <h1 className="text-4xl font-extrabold tracking-tight text-gray-800">
           <span className="text-green-600">Manual</span> Payment Entry
@@ -80,7 +80,7 @@ export default async function PaymentEntry(){
 
           {/* BUTTON */}
           <div>
-            <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition shadow-sm font-medium w-full">
+            <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition shadow-sm font-medium w-full hover:cursor-pointer">
               Record Payment
             </button>
           </div>

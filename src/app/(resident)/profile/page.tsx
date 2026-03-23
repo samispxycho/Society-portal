@@ -129,7 +129,7 @@ export default function Profile() {
           <div className="mt-6">
             <button
               onClick={updateProfile}
-              className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition shadow-sm font-medium"
+              className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition shadow-sm font-medium hover:cursor-pointer"
             >
               Save Profile Changes
             </button>
@@ -166,14 +166,14 @@ export default function Profile() {
           <div className="flex items-center justify-between mt-6">
             <button
               onClick={changePassword}
-              className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition shadow-sm font-medium"
+              className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition shadow-sm font-medium hover:cursor-pointer"
             >
               Update Password
             </button>
 
             <button
               onClick={handleLogout}
-              className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg transition shadow-sm font-medium"
+              className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg transition shadow-sm font-medium hover:cursor-pointer"
             >
               Logout
             </button>

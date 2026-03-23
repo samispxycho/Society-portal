@@ -17,12 +17,6 @@ export default function Home(){
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-rose-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-      </div>
-
       {/* Main Card */}
       <div className="relative bg-white/90 backdrop-blur-xl p-10 rounded-2xl shadow-2xl w-96 text-center border border-white/30 transform transition-all duration-500 hover:scale-105 z-10">
         

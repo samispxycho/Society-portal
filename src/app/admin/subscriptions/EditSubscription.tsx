@@ -52,7 +52,7 @@ export default function EditSubscription({
 
       <button
         onClick={updateSubscription}
-        className="bg-indigo-600 text-white px-3 py-1 rounded"
+        className="bg-indigo-600 text-white px-3 py-1 rounded hover:cursor-pointer"
       >
         {loading ? "Saving..." : "Update"}
       </button>

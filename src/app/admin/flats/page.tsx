@@ -54,7 +54,6 @@ export default async function FlatsPage({
           </p>
         </div>
 
-        {/* ✅ ONLY CHANGE HERE */}
         <div className="flex gap-3">
           <a
             href="/admin/check-flats"

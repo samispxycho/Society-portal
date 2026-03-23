@@ -16,7 +16,6 @@ export default async function SubscriptionsPage() {
   return (
     <div className="max-w-5xl mx-auto p-8 space-y-8 bg-gray-50 min-h-screen">
 
-      {/* Header */}
       <div>
         <h1 className="text-4xl font-extrabold tracking-tight text-gray-800">
           <span className="text-green-600">Subscription</span> Plans
@@ -26,10 +25,8 @@ export default async function SubscriptionsPage() {
         </p>
       </div>
 
-      {/* MAIN CONTAINER */}
       <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200 space-y-6">
 
-        {/* Plans List */}
         <div className="space-y-6">
 
           {plans.rows.map((plan: any, index: number) => (
@@ -42,7 +39,6 @@ export default async function SubscriptionsPage() {
               }`}
             >
 
-              {/* Left */}
               <div className="space-y-1">
                 <h3 className="text-lg font-semibold text-gray-800">
                   {plan.flat_type}
@@ -52,7 +48,6 @@ export default async function SubscriptionsPage() {
                 </p>
               </div>
 
-              {/* Middle */}
               <div className="text-right">
                 <div className="text-xl font-bold text-green-600">
                   ₹{plan.amount}
@@ -62,7 +57,6 @@ export default async function SubscriptionsPage() {
                 </div>
               </div>
 
-              {/* Right */}
               <EditSubscription id={plan.id} amount={plan.amount} />
 
             </div>
@@ -70,7 +64,6 @@ export default async function SubscriptionsPage() {
 
         </div>
 
-        {/* Summary */}
         <div className="pt-6 border-t border-gray-200 flex items-center justify-between text-sm">
 
           <div className="flex items-center gap-4">
@@ -88,7 +81,6 @@ export default async function SubscriptionsPage() {
             </span>
           </div>
 
-          {/* Date */}
           <div className="text-sm text-gray-500 bg-gray-100 px-4 py-2 rounded-lg">
             {currentDate}
           </div>

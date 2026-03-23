@@ -75,7 +75,7 @@ export default async function NotificationsPage(){
 
         </div>
 
-        <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition shadow-sm font-medium">
+        <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition shadow-sm font-medium hover:cursor-pointer">
           Send Notification
         </button>
 

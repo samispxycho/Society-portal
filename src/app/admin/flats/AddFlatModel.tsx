@@ -35,8 +35,7 @@ export default function AddFlatButton(){
         onClick={()=>setOpen(true)}
         className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-2.5 rounded-lg shadow-md cursor-pointer"
       >
-        <Plus size={18}/>
-        Add Flat
+        Add Resident
       </button>
 
       {open && (
@@ -112,14 +111,14 @@ export default function AddFlatButton(){
 
               <div className="flex gap-3 pt-2">
 
-                <button className="bg-indigo-600 text-white px-4 py-2 rounded">
+                <button className="bg-indigo-600 text-white px-4 py-2 rounded hover:cursor-pointer">
                   Save
                 </button>
 
                 <button
                   type="button"
                   onClick={()=>setOpen(false)}
-                  className="bg-gray-400 text-white px-4 py-2 rounded"
+                  className="bg-gray-400 text-white px-4 py-2 rounded hover:cursor-pointer"
                 >
                   Cancel
                 </button>
