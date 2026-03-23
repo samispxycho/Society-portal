@@ -7,8 +7,14 @@ export default function NotificationPopup({ notification }: any){
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if(notification){
+    if(!notification) return;
+
+    const key = `notification_seen_${notification.created_at}`;
+    const seen = sessionStorage.getItem(key);
+
+    if(!seen){
       setOpen(true);
+      sessionStorage.setItem(key, "true");
     }
   }, [notification]);
 

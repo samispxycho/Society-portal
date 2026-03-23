@@ -11,7 +11,7 @@ export async function POST(req: Request) {
   const recordId = recordIdRaw ? Number(recordIdRaw) : null;
   const flatIdFromAdmin = flatIdFromAdminRaw ? Number(flatIdFromAdminRaw) : null;
 
-  const paymentMode = "upi";
+  const paymentMode = (data.get("payment_mode") as string) || "upi";
 
   const client = await pool.connect();
 
@@ -23,7 +23,6 @@ export async function POST(req: Request) {
     let flatId;
     let amount;
 
-    // ✅ RESIDENT FLOW
     if (recordId) {
 
       const recordRes = await client.query(
@@ -39,7 +38,6 @@ export async function POST(req: Request) {
       recordIdToUse = recordId;
 
     } 
-    // ✅ ADMIN FLOW
     else {
 
       const currentMonth = new Date().getMonth() + 1;
@@ -59,7 +57,6 @@ export async function POST(req: Request) {
       flatId = flatIdFromAdmin;
     }
 
-    // GET FLAT TYPE
     const flatRes = await client.query(
       `SELECT flat_type FROM flats WHERE id=$1`,
       [flatId]
@@ -67,7 +64,6 @@ export async function POST(req: Request) {
 
     const flatType = flatRes.rows[0].flat_type;
 
-    // GET AMOUNT
     const planRes = await client.query(
       `SELECT amount FROM subscription_plans WHERE flat_type=$1`,
       [flatType]
@@ -75,7 +71,6 @@ export async function POST(req: Request) {
 
     amount = planRes.rows[0].amount;
 
-    // INSERT PAYMENT
     await client.query(
       `INSERT INTO payments
        (flat_id, monthly_record_id, amount, payment_mode, payment_date)
@@ -83,7 +78,6 @@ export async function POST(req: Request) {
       [flatId, recordIdToUse, amount, paymentMode]
     );
 
-    // UPDATE RECORD
     await client.query(
       `UPDATE monthly_records
        SET status='paid', amount=$1
@@ -93,8 +87,13 @@ export async function POST(req: Request) {
 
     await client.query("COMMIT");
 
+    const isResident = !!recordId;
+
     return NextResponse.redirect(
-      new URL("/payment-success", req.url)
+      new URL(
+        isResident ? "/dashboard" : "/admin/dashboard",
+        req.url
+      )
     );
 
   } catch (error) {
