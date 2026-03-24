@@ -171,7 +171,7 @@ current residents (3)
   email : harshita@gmail.com
   password : harshita123
 ---
-
+```
 ## 📌 Summary
 
 A complete society management platform with:
