@@ -7,7 +7,7 @@ export default function MonthlyBreakdownPopup({ data }: any) {
 
   return (
     <>
-      {/* Trigger (same look as "View") */}
+
       <button
         onClick={() => setOpen(true)}
         className="text-green-600 font-medium"
@@ -15,7 +15,6 @@ export default function MonthlyBreakdownPopup({ data }: any) {
         View
       </button>
 
-      {/* Modal */}
       {open && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
 

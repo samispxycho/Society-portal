@@ -186,7 +186,6 @@ export default async function AdminDashboard() {
 
       </div>
 
-      {/* SECOND ROW */}
       <div className="grid grid-cols-3 gap-6">
 
         {/* PENDING */}

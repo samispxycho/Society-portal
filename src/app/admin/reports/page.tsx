@@ -80,7 +80,6 @@ export default async function ReportsPage({
 
       <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200 space-y-10">
 
-        {/* SUMMARY */}
         <div>
           <h2 className="text-lg font-semibold text-gray-800 mb-4">
             Summary
@@ -105,7 +104,6 @@ export default async function ReportsPage({
           </div>
         </div>
 
-        {/* PAYMENT MODES */}
         <div className="pt-8 border-t border-gray-200">
 
           <h2 className="text-lg font-semibold text-gray-800 mb-6">
@@ -180,7 +178,6 @@ export default async function ReportsPage({
 
         </div>
 
-        {/* MONTHLY WITH BREAKDOWN */}
         <div className="pt-8 border-t border-gray-200">
 
           <h2 className="text-lg font-semibold text-gray-800 mb-6">
@@ -228,7 +225,6 @@ export default async function ReportsPage({
 
         </div>
 
-        {/* DOWNLOAD */}
         <div className="pt-6 border-t border-gray-200">
           <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition shadow-sm font-medium">
             <a href="/api/admin/reports/download">

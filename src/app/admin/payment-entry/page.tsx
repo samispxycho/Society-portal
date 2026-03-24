@@ -27,7 +27,6 @@ export default async function PaymentEntry(){
         </p>
       </div>
 
-      {/* CARD */}
       <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200 space-y-6 max-w-xl mx-auto">
 
         <form
@@ -36,7 +35,6 @@ export default async function PaymentEntry(){
           className="space-y-6"
         >
 
-          {/* FLAT */}
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-2">
               Select Flat
@@ -63,7 +61,6 @@ export default async function PaymentEntry(){
             </select>
           </div>
 
-          {/* PAYMENT MODE */}
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-2">
               Payment Mode
@@ -77,8 +74,7 @@ export default async function PaymentEntry(){
               <option value="upi">UPI</option>
             </select>
           </div>
-
-          {/* BUTTON */}
+          
           <div>
             <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition shadow-sm font-medium w-full hover:cursor-pointer">
               Record Payment

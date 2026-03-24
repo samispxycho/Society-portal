@@ -11,7 +11,6 @@ export async function POST(req: Request) {
 
     await client.query("BEGIN");
 
-    // 🔥 0️⃣ Get flat_number before deleting
     const flatRes = await client.query(
       `SELECT flat_number FROM flats WHERE id = $1`,
       [id]
@@ -23,31 +22,26 @@ export async function POST(req: Request) {
 
     const flatNumber = flatRes.rows[0].flat_number;
 
-    // 1️⃣ Delete payments
     await client.query(
       `DELETE FROM payments WHERE flat_id = $1`,
       [id]
     );
 
-    // 2️⃣ Delete monthly records
     await client.query(
       `DELETE FROM monthly_records WHERE flat_id = $1`,
       [id]
     );
 
-    // 3️⃣ Delete resident user
     await client.query(
       `DELETE FROM users WHERE flat_id = $1`,
       [id]
     );
 
-    // 4️⃣ Delete flat
     await client.query(
       `DELETE FROM flats WHERE id = $1`,
       [id]
     );
 
-    // 🔥 5️⃣ VERY IMPORTANT → make flat available again
     await client.query(
       `UPDATE flat_master
        SET is_occupied = false

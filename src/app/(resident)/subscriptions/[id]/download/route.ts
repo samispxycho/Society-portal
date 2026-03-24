@@ -21,7 +21,6 @@ export async function GET(
     const user = JSON.parse(userCookie.value);
     const flatId = user.flat_id;
 
-    // ✅ get latest payment
     const payment = await pool.query(
       `SELECT amount, payment_mode, payment_date 
        FROM payments 
@@ -39,12 +38,10 @@ export async function GET(
       ? new Date(p.payment_date).toLocaleDateString()
       : "N/A";
 
-    // ✅ Random receipt number
     const receiptNumber = generateReceiptNumber();
     const currentDate = new Date().toLocaleDateString();
     const currentTime = new Date().toLocaleTimeString();
 
-    // ✅ CSV receipt (NO NAME anywhere)
     const csv = `"=========================================="
 "                PAYMENT RECEIPT                "
 "=========================================="

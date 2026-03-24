@@ -26,7 +26,6 @@ export default function DeleteFlatButton({ id }: { id: number }) {
 
   return (
     <>
-      {/* Delete Icon */}
       <button
         onClick={() => setOpen(true)}
         className="p-2 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition"
@@ -35,7 +34,6 @@ export default function DeleteFlatButton({ id }: { id: number }) {
         <Trash2 size={18} />
       </button>
 
-      {/* Modal */}
       {open && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
 

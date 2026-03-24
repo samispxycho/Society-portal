@@ -17,7 +17,6 @@ export default async function NotificationsPage(){
 
     <div className="max-w-5xl mx-auto p-8 space-y-8 bg-gray-50 min-h-screen">
 
-      {/* Header */}
       <div>
         <h1 className="text-4xl font-extrabold tracking-tight text-gray-800">
           <span className="text-green-600">Send</span> Notification
@@ -27,7 +26,6 @@ export default async function NotificationsPage(){
         </p>
       </div>
 
-      {/* Send Notification */}
 
       <form
         action="/api/admin/notifications"
@@ -80,8 +78,6 @@ export default async function NotificationsPage(){
         </button>
 
       </form>
-
-      {/* Notifications List */}
 
       <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200">
 

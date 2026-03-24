@@ -51,7 +51,6 @@ export default async function SubscriptionDetails(
   const currentDate = new Date().toLocaleDateString();
   const currentTime = new Date().toLocaleTimeString();
 
-  // ✅ Transaction ID instead of receipt number
   const transactionId = p ? `TXN-${p.id}` : "N/A";
 
   return (
@@ -66,7 +65,6 @@ export default async function SubscriptionDetails(
         </p>
       </div>
 
-      {/* Receipt Card */}
       <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
         
         {/* Header */}
@@ -75,7 +73,6 @@ export default async function SubscriptionDetails(
           <p className="text-purple-100 text-sm mt-1">Official Payment Confirmation</p>
         </div>
 
-        {/* Body */}
         <div className="p-8 space-y-6">
           
           {/* Info Row */}
@@ -171,7 +168,6 @@ export default async function SubscriptionDetails(
         </div>
       </div>
 
-      {/* Download Button */}
       {r.status === "paid" && (
         <div className="flex justify-center">
           <a

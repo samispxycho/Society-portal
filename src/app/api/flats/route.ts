@@ -11,7 +11,6 @@ export async function POST(req: Request) {
 
     await client.query("BEGIN");
 
-    // 1️⃣ Insert flat
     const flatResult = await client.query(
       `INSERT INTO flats (flat_number, owner_name, email, phone, flat_type)
        VALUES ($1,$2,$3,$4,$5)
@@ -21,7 +20,6 @@ export async function POST(req: Request) {
 
     const flatId = flatResult.rows[0].id;
 
-    // 2️⃣ Mark flat as occupied
     await client.query(
       `UPDATE flat_master
        SET is_occupied = true
@@ -29,7 +27,6 @@ export async function POST(req: Request) {
       [flat_number]
     );
 
-    // 3️⃣ Get correct amount from subscription_plans
     const planRes = await client.query(
       `SELECT amount FROM subscription_plans WHERE flat_type=$1`,
       [flat_type]
@@ -37,7 +34,6 @@ export async function POST(req: Request) {
 
     const amount = planRes.rows[0]?.amount || 0;
 
-    // 4️⃣ Create monthly record (FIXED 0 ISSUE)
     const month = new Date().getMonth() + 1;
     const year = new Date().getFullYear();
 
@@ -47,7 +43,6 @@ export async function POST(req: Request) {
       [flatId, month, year, amount]
     );
 
-    // 5️⃣ Create resident user (AS YOU WANTED)
     await client.query(
       `INSERT INTO users (name, email, phone, password, role, flat_id)
        VALUES ($1,$2,$3,$4,$5,$6)`,
@@ -55,7 +50,7 @@ export async function POST(req: Request) {
         owner_name,
         email,
         phone,
-        "123456",   // ✅ EXACTLY AS YOU SAID
+        "123456",  
         "resident",
         flatId
       ]

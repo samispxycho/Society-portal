@@ -5,7 +5,6 @@ export async function GET(){
 
   try{
 
-    // 🔹 Get monthly totals (Jan, Feb, March only)
     const result = await pool.query(`
       SELECT 
         EXTRACT(MONTH FROM payment_date) as month,
@@ -16,7 +15,7 @@ export async function GET(){
       ORDER BY month
     `);
 
-    // Default values
+
     let jan = 0, feb = 0, mar = 0;
 
     result.rows.forEach((row:any)=>{
@@ -27,14 +26,13 @@ export async function GET(){
 
     const total = Number(jan) + Number(feb) + Number(mar);
 
-    // 🔥 CSV CONTENT
     const csv = `
-Month,Amount
-January,${jan}
-February,${feb}
-March,${mar}
-Total,${total}
-`;
+    Month,Amount
+    January,${jan}
+    February,${feb}
+    March,${mar}
+    Total,${total}
+    `;
 
     return new NextResponse(csv, {
       headers: {

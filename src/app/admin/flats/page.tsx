@@ -43,7 +43,6 @@ export default async function FlatsPage({
   return (
     <div className="max-w-7xl mx-auto p-8 space-y-8 bg-gray-50 min-h-screen">
 
-      {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-4xl font-extrabold tracking-tight text-gray-800">
@@ -67,7 +66,6 @@ export default async function FlatsPage({
 
       </div>
 
-      {/* Table */}
       <div className="overflow-hidden bg-white border border-gray-200 rounded-xl shadow-md">
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-left">

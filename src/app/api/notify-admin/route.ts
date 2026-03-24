@@ -22,7 +22,7 @@ ${body}
   await pool.query(
     `INSERT INTO notifications (title, message, flat_id, is_global, created_at)
      VALUES ($1, $2, $3, $4, NOW())`,
-    [title, fullMessage, null, false] // ✅ ONLY CHANGE HERE
+    [title, fullMessage, null, false]
   );
 
   return NextResponse.redirect(new URL("/guest-dashboard", req.url));

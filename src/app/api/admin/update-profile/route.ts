@@ -27,7 +27,6 @@ export async function POST(req: Request){
 
     const user = JSON.parse(userCookie.value);
 
-    // ✅ CRITICAL FIX
     if(user.role !== "admin"){
       return NextResponse.json(
         { message: "Access denied" },

@@ -9,7 +9,6 @@ export default async function CheckFlats({
   const params = await searchParams;
   const page = parseInt(params?.page || "1", 10);
 
-  // Get all blocks
   const blocksResult = await pool.query(
     `SELECT DISTINCT LEFT(flat_number,1) as block
      FROM flat_master
@@ -21,7 +20,6 @@ export default async function CheckFlats({
 
   const currentBlock = blocks[page - 1];
 
-  // Fetch flats of current block
   const flats = await pool.query(
     `SELECT flat_number, flat_type, is_occupied
      FROM flat_master

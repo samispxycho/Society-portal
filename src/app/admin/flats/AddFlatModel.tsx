@@ -10,7 +10,6 @@ export default function AddFlatButton(){
   const [allFlats,setAllFlats] = useState<any[]>([]);
   const [filteredFlats,setFilteredFlats] = useState<any[]>([]);
 
-  // fetch available flats
   useEffect(()=>{
     fetch("/api/flats/available")
       .then(res=>res.json())
@@ -19,7 +18,6 @@ export default function AddFlatButton(){
       });
   },[]);
 
-  // filter when type changes
   useEffect(()=>{
     if(flatType){
       const filtered = allFlats.filter(
@@ -70,7 +68,6 @@ export default function AddFlatButton(){
               className="space-y-3"
             >
 
-              {/* FLAT TYPE */}
               <select
                 name="flat_type"
                 onChange={(e)=>setFlatType(e.target.value)}
@@ -83,7 +80,6 @@ export default function AddFlatButton(){
                 <option value="3BHK">3BHK</option>
               </select>
 
-              {/* FLAT NUMBER */}
               <select
                 name="flat_number"
                 className="border p-2 w-full rounded"

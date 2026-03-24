@@ -57,7 +57,6 @@ export default function AdminLogin() {
                 <div className="absolute inset-0 bg-black/50"></div>
             </div>
 
-            {/* Login Card */}
             <div className="relative bg-white/90 backdrop-blur-xl p-8 rounded-2xl shadow-2xl w-96 border border-white/30 transform transition-all duration-500 z-10">
 
                 {/* Back to Home Link */}
