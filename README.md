@@ -25,6 +25,7 @@ A full-stack web application designed to manage residential society operations s
 * View payment history
 * Update profile and password
 * Receive notifications
+* Download payment reciepts
 
 ---
 
